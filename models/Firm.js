@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose');
 
 const firmSchema = new mongoose.Schema({
@@ -33,8 +32,14 @@ const firmSchema = new mongoose.Schema({
     vendor: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Vendor'
+    }],
+    products: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Product'
     }]
-});
+},
+{ timestamps: true }
+);
 
 const Firm = mongoose.model('Firm', firmSchema);
 

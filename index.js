@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const vendorRoutes = require('./routes/vendorRoutes');
 const bodyParser = require('body-parser');
 const firmRoutes = require('./routes/firmRoutes');
+const productRoutes = require('./routes/productRoutes')
 const cors = require('cors');
 const path = require('path')
 
@@ -22,6 +23,7 @@ app.use(bodyParser.json());
 
 app.use('/vendor', vendorRoutes);  //middleware hit
 app.use('/firm', firmRoutes)        //middleware hit
+app.use('/product', productRoutes)        //middleware hit
 
 
 app.listen(PORT, () => {
