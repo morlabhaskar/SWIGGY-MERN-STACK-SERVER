@@ -25,6 +25,7 @@ app.use('/vendor', vendorRoutes);  //middleware hit
 app.use('/firm', firmRoutes)        //middleware hit
 app.use('/product', productRoutes)        //middleware hit
 
+app.use('/uploads',express.static('uploads'));
 
 app.listen(PORT, () => {
     console.log(`server started and running at ${PORT}`)

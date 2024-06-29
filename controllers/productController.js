@@ -56,9 +56,10 @@ const getProductByFirm = async(req,res) => {
         if(!firm) {
             return res.status(404).json({error:"No Firm Found"})
         }
+        const restarentName = firm.firmName;
         const products = await Product.find({firm : firmId});
-
-        res.status(200).json(products)
+        
+        res.status(200).json({restarentName,products})
         
     } catch (error) {
         console.log(error)
@@ -67,4 +68,20 @@ const getProductByFirm = async(req,res) => {
     }
 }
 
-module.exports = {addProduct : [upload.single('image'),addProduct],getProductByFirm}
+const deleteProductById = async (req,res) => {
+    try {
+        const productId = req.params.productId;
+        const deleteProduct = await Product.findByIdAndDelete(productId);
+        
+        if(!deleteProduct) {
+            return res.status(404).json({error:"No Product Found"})
+        }
+        res.status(200).json({msg:"Product Deleted Successfully"})
+    } catch (error) {
+        console.log(error)
+        res.status(404).json({error:"Internal Server Error"});
+        
+    }
+}
+
+module.exports = {addProduct : [upload.single('image'),addProduct],getProductByFirm,deleteProductById}

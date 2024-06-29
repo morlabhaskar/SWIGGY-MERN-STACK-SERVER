@@ -29,11 +29,9 @@ const addFirm = async(req, res) => {
         if (!vendor) {
             res.status(404).json({ message: "Vendor not found" })
         }
-
         // if (vendor.firm.length > 0) {
         //     return res.status(400).json({ message: "vendor can have only one firm" });
         // }
-
         const firm = new Firm({
             firmName,
             area,
@@ -63,4 +61,20 @@ const addFirm = async(req, res) => {
     }
 }
 
-module.exports = { addFirm: [upload.single('image'), addFirm] }
+const deleteFirmById = async (req,res) => {
+    try {
+        const firmId = req.params.firmId;
+        const deleteFirm = await Firm.findByIdAndDelete(firmId);
+        
+        if(!deleteFirm) {
+            return res.status(404).json({error:"No Product Found"})
+        }
+        res.status(200).json({msg:"Firm Deleted Successfully"})
+    } catch (error) {
+        console.log(error)
+        res.status(404).json({error:"Internal Server Error"});
+        
+    }
+}
+
+module.exports = { addFirm: [upload.single('image'), addFirm],deleteFirmById }
