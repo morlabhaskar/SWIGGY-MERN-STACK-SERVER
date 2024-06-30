@@ -9,7 +9,7 @@ const cors = require('cors');
 const path = require('path')
 
 const app = express()
-const PORT = 4000;
+const PORT =process.env.PORT || 4000;
 
 dotEnv.config();
 app.use(cors())
@@ -30,6 +30,6 @@ app.use('/uploads',express.static('uploads'));
 app.listen(PORT, () => {
     console.log(`server started and running at ${PORT}`)
 });
-app.get("/",(req,res)=>{
+app.use("/",(req,res)=>{
     res.send("Swiggy App is Running...")
 })
