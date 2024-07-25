@@ -50,7 +50,7 @@ const addProduct = async (req,res) => {
 
 const getProductByFirm = async(req,res) => {
     try {
-        const firmId = req.params.banana
+        const firmId = req.params.id
         const firm = await Firm.findById(firmId);
 
         if(!firm) {
@@ -63,7 +63,7 @@ const getProductByFirm = async(req,res) => {
         
     } catch (error) {
         console.log(error)
-        res.status(500).json({error:"Internal Server Error"});
+        res.status(500).json({error:"Internal Server Error"})
         
     }
 }

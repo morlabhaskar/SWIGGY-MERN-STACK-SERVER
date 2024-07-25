@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post('/add-product/:firmId',productController.addProduct);
 
-router.get('/:banana',productController.getProductByFirm);
+router.get('/:id',productController.getProductByFirm);
 
 router.get('/uploads/:imageName',(req,res) => {
     const imageName = req.params.imageName;
