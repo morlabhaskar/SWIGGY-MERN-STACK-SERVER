@@ -45,7 +45,7 @@ const vendorLogin = async(req, res) => {
         }
         const token = jwt.sign({ vendorId: vendor._id }, secretKey, { expiresIn: "1h" })
         const vendorId = vendor._id;
-
+        
         res.status(200).json({ success: "Login successful", token, vendorId })
         // console.log(email, "this is token", token);
     } catch (error) {
@@ -70,11 +70,12 @@ const getVendorById = async(req,res) => {
     const vendorId = req.params.apple
     try {
         const vendor = await Vendor.findById(vendorId).populate('firm');
+        // const vendor = await Vendor.findById(vendorId);
         if(!vendor) {
             return res.status(500).json({error:"Vendor Not Found"});
         }
         const vendorFirmId = vendor.firm[0]._id;
-        res.status(200).json({vendorId,vendorFirmId})
+        res.status(200).json({vendorId,vendorFirmId,vendor})
         console.log(vendorFirmId)
     } catch (error) {
         console.log(error)
