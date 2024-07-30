@@ -13,13 +13,13 @@ const PORT = process.env.PORT || 4000;
 
 dotEnv.config();
 // app.use(cors())
-app.use(
-    cors({
-        origin: ["http://localhost:5173"],
-        methods: ["GET,POST,DELETE,PUT,PATCH"],
-        credentials: true,
-    })
-);
+// app.use(
+//     cors({
+//         origin: ["http://localhost:5173"],
+//         methods: ["GET,POST,DELETE,PUT,PATCH"],
+//         credentials: true,
+//     })
+// );
 const MONGO_URL = process.env.MONGO_URL
 
 mongoose.connect(MONGO_URL)
