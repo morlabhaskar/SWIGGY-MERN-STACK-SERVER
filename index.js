@@ -37,6 +37,6 @@ app.use('/uploads',express.static('uploads'));
 app.listen(PORT, () => {
     console.log(`server started and running at ${PORT}`)
 });
-app.use("/",(req,res)=>{
+app.get("/",(req,res)=>{
     res.send("Swiggy App is Running...")
 })
