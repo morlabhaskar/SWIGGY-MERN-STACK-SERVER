@@ -8,8 +8,6 @@ dotEnv.config();
 
 const secretKey = process.env.WhatIsYourName
 
-
-
 const vendorRegister = async(req, res) => {
     const { username, email, password } = req.body;
     try {
@@ -47,7 +45,6 @@ const vendorLogin = async(req, res) => {
         const vendorId = vendor._id;
         
         res.status(200).json({ success: "Login successful", token, vendorId })
-        // console.log(email, "this is token", token);
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: "Internal server error" });
@@ -58,7 +55,6 @@ const vendorLogin = async(req, res) => {
 const getAllVendors = async(req,res) => {
     try {
         const vendors = await Vendor.find().populate('firm');
-        // const vendors = await Vendor.find({})
         res.json({vendors})
     } catch (error) {
         console.log(error)
@@ -70,7 +66,6 @@ const getVendorById = async(req,res) => {
     const vendorId = req.params.apple
     try {
         const vendor = await Vendor.findById(vendorId).populate('firm');
-        // const vendor = await Vendor.findById(vendorId);
         if(!vendor) {
             return res.status(500).json({error:"Vendor Not Found"});
         }

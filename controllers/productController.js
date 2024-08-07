@@ -52,8 +52,6 @@ const getAllProducts = async(req,res) => {
     try {
         // const firmId = req.params.id
         // const firm = await Firm.findById(firmId);
-
-        
         const products = await Product.find({});
         if(!products) {
             return res.status(404).json({error:"No Products Found"})
